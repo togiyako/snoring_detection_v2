@@ -5,7 +5,7 @@ https://studio.edgeimpulse.com/studio/662810
 
 ## Installation
 
-git clone https://github.com/username/repo.git
+git clone https://github.com/togiyako/snoring_detection_v2.git
 
 ## Build and  deploy
 
