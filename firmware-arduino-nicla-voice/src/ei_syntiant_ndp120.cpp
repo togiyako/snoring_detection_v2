@@ -32,11 +32,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 /* Include ----------------------------------------------------------------- */
-
 #include "ei_syntiant_ndp120.h"
 #include "Nicla_System.h"
 #include "NDP.h"
-#include <Adafruit_DRV2605.h>
 #include "edge-impulse-sdk/porting/ei_classifier_porting.h"
 #include "ingestion-sdk-platform/nicla_syntiant/ei_at_handlers.h"
 #include "ingestion-sdk-platform/nicla_syntiant/ei_device_syntiant_nicla.h"
@@ -54,17 +52,11 @@
 #include "EventQueue.h"
 
 #define TEST_READ_TANK      0
-#define LAST_N_PREDICTIONS 10
-// Haptic motor driver
-Adafruit_DRV2605 drv;
-// Buffer to keep the last 10 predictions
-uint8_t pred_buf[LAST_N_PREDICTIONS] = {0};
 
 /* device class */
 extern NDPClass NDP;
 static ATServer *at;
 static bool ndp_is_init;
-
 
 #if TEST_READ_TANK == 1
 static void test_ndp_extract(void);
@@ -98,13 +90,6 @@ void ei_setup(char* fw1, char* fw2, char* fw3)
     nicla::begin();
     nicla::disableLDO();    // needed 
     nicla::leds.begin();
-
-    if (! drv.begin()) {
-        ei_printf("Could not find DRV2605\n");
-        while (true) { delay(10); }
-    }
-  drv.selectLibrary(1);
-  drv.setMode(DRV2605_MODE_INTTRIG);
 
     while (!Serial) {   /* if Serial not avialable */
         nicla::leds.setColor(red);
@@ -270,57 +255,13 @@ static void error_event(void)
  */
 static void match_event(char* label)
 {
-    if (_on_match_enabled == true){
+    if (_on_match_enabled == true) {
         if (strlen(label) > 0) {
-            got_match = true;
-            ei_printf("Match: %s\n", label); 
-            if (strcmp(label, "NN0:snoring") == 0) {
-                nicla::leds.setColor(green);
-                delay(500);
- 
-                memmove(pred_buf, pred_buf+1, LAST_N_PREDICTIONS-1);            
-                pred_buf[LAST_N_PREDICTIONS-1] = 1;
- 
-                int sum = 0;
-                for (int i = 0; i < LAST_N_PREDICTIONS; i++) {
-                    sum += pred_buf[i];
-                    ei_printf("%d ", pred_buf[i]);
-                }
-                ei_printf("\n");
-                
-                if (sum >= 3) {
-                    ei_printf("Snoring Detected");
-                    // reset buffer
-                    for (int i = 0; i < LAST_N_PREDICTIONS; i++) {
-                       pred_buf[i] = 0;
-                    }
-
-                    int count = 5;
-                    while (count > 0) {
-                        drv.setWaveform(0, 14); // play effect strong buzz
-                        drv.setWaveform(1, 0);  // end waveform
-                        drv.go();
-                        delay(500);
-                        count--;
-                    }
-                }
-            }
-
-            if (strcmp(label, "NN0:unknown_noise") == 0) {
-                nicla::leds.setColor(red);
-                // rotate the buffer by 1 element
-                memmove(pred_buf, pred_buf+1, LAST_N_PREDICTIONS-1);
-                pred_buf[LAST_N_PREDICTIONS-1] = 0;
-
-                for (int i = 0; i < LAST_N_PREDICTIONS; i++) {
-                    ei_printf("%d ", pred_buf[i]);
-                }
-                ei_printf("\n");
-            }
+            got_match = true;            
+            ei_printf("Match: %s\n", label);            
         }
     }
 }
-
 
 /**
  * @brief 
