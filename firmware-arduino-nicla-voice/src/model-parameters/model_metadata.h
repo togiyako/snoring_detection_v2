@@ -44,7 +44,9 @@
 #ifdef __cplusplus
 #include <tuple>
 #endif
+#include "edge-impulse-sdk/classifier/ei_model_types.h"
 #include "edge-impulse-sdk/classifier/ei_classifier_types.h"
+
 
 #define EI_CLASSIFIER_NONE                       255
 #define EI_CLASSIFIER_UTENSOR                    1
@@ -81,10 +83,10 @@
 #define EI_CLASSIFIER_DATATYPE_UINT8             3
 #define EI_CLASSIFIER_DATATYPE_INT8              9
 
-#define EI_CLASSIFIER_PROJECT_ID                 662810
+#define EI_CLASSIFIER_PROJECT_ID                 702725
 #define EI_CLASSIFIER_PROJECT_OWNER              "togiyako"
-#define EI_CLASSIFIER_PROJECT_NAME               "Snoring detection"
-#define EI_CLASSIFIER_PROJECT_DEPLOY_VERSION     6
+#define EI_CLASSIFIER_PROJECT_NAME               "Snoring Detection (Syntiant NDP120)"
+#define EI_CLASSIFIER_PROJECT_DEPLOY_VERSION     13
 #define EI_CLASSIFIER_NN_INPUT_FRAME_SIZE        1600
 #define EI_CLASSIFIER_RAW_SAMPLE_COUNT           15488
 #define EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME      1
@@ -101,7 +103,7 @@
 #define EI_CLASSIFIER_SINGLE_FEATURE_INPUT       1
 #define EI_CLASSIFIER_FREQUENCY                  16000
 #define EI_CLASSIFIER_HAS_MODEL_VARIABLES        1
-#define EI_CLASSIFIER_THRESHOLD                  0.6
+#define EI_CLASSIFIER_THRESHOLD                  0.9
 
 #define EI_CLASSIFIER_OBJECT_DETECTION             0
 #define EI_CLASSIFIER_TFLITE_OUTPUT_DATA_TENSOR    0
@@ -110,7 +112,7 @@
 #define EI_CLASSIFIER_TFLITE_INPUT_DATATYPE         EI_CLASSIFIER_DATATYPE_FLOAT32
 #define EI_CLASSIFIER_TFLITE_OUTPUT_DATATYPE        EI_CLASSIFIER_DATATYPE_FLOAT32
 
-#define EI_CLASSIFIER_TFLITE_LARGEST_ARENA_SIZE  74060
+#define EI_CLASSIFIER_TFLITE_LARGEST_ARENA_SIZE  0
 
 #define EI_CLASSIFIER_INFERENCING_ENGINE            EI_CLASSIFIER_SYNTIANT
 #define EI_CLASSIFIER_COMPILED                      0
@@ -147,7 +149,7 @@
 
 #define EI_STUDIO_VERSION_MAJOR             1
 #define EI_STUDIO_VERSION_MINOR             71
-#define EI_STUDIO_VERSION_PATCH             44
+#define EI_STUDIO_VERSION_PATCH             46
 
 #define EI_CLASSIFIER_HR_ENABLED            0
 

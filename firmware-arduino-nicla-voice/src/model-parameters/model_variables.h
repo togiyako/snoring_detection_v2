@@ -48,18 +48,14 @@
 
 const char* ei_classifier_inferencing_categories[] = { "snoring", "z_openset" };
 
-ei_dsp_named_axis_t ei_dsp_config_5_named_axes[] = {
-    { .name = "Signal", .axis = 0 }
-};
-size_t ei_dsp_config_5_named_axes_size = 1;
 EI_CLASSIFIER_DSP_AXES_INDEX_TYPE ei_dsp_config_5_axes[] = { 0 };
 const uint32_t ei_dsp_config_5_axes_size = 1;
 ei_dsp_config_audio_syntiant_t ei_dsp_config_5 = {
     5, // uint32_t blockId
     1, // int implementationVersion
     1, // int length of axes
-    ei_dsp_config_5_named_axes, // named axes
-    ei_dsp_config_5_named_axes_size, // size of the named axes array
+    NULL, // named axes
+    0, // size of the named axes array
     0.032f, // float frame_length
     0.024f, // float frame_stride
     40, // int num_filters

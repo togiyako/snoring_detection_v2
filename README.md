@@ -1,15 +1,18 @@
 
 ## Snoring detection
 
-https://studio.edgeimpulse.com/studio/662810
+Public Project Link: https://studio.edgeimpulse.com/studio/662810
 
 ## Installation
 
 git clone https://github.com/togiyako/snoring_detection_v2.git
 
+Install ArduinoCLI https://arduino.github.io/arduino-cli/latest/installation/
+
 ## Build and  deploy
 
 For build follow the instructions
+
 
 $ cd firmware-arduino-nicla-voice
 
