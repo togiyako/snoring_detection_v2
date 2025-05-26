@@ -44,9 +44,7 @@
 #ifdef __cplusplus
 #include <tuple>
 #endif
-#include "edge-impulse-sdk/classifier/ei_model_types.h"
 #include "edge-impulse-sdk/classifier/ei_classifier_types.h"
-
 
 #define EI_CLASSIFIER_NONE                       255
 #define EI_CLASSIFIER_UTENSOR                    1

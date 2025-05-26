@@ -255,6 +255,7 @@ static void error_event(void)
  */
 static void match_event(char* label)
 {
+    ei_printf("match_event called with label: %s\n", label);
     if (_on_match_enabled == true) {
         if (strlen(label) > 0) {
             got_match = true;            
@@ -268,7 +269,7 @@ static void match_event(char* label)
  * 
  */
 static void irq_event(void)
-{    
+{        
     if (_on_match_enabled == true) {
         got_event = true;
     }
