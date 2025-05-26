@@ -1,5 +1,5 @@
 
-## Snoring detection
+### Snoring detection ###
 
 Public Project Link: https://studio.edgeimpulse.com/studio/662810
 
@@ -8,6 +8,8 @@ Public Project Link: https://studio.edgeimpulse.com/studio/662810
 git clone https://github.com/togiyako/snoring_detection_v2.git
 
 Install ArduinoCLI https://arduino.github.io/arduino-cli/latest/installation/
+
+Install Impulse CLI https://docs.edgeimpulse.com/docs/edge-impulse-cli/cli-installation
 
 To install the Arduino Core for the Nicla board and the pyserial package required to update the NDP120 chip, execute the commands below
 
@@ -22,10 +24,9 @@ for linux:
 for windows:
 ./install_lib_win.bat
 
-## Build and  deploy
+## Build and deploy
 
 For build follow the instructions
-
 
 $ cd firmware-arduino-nicla-voice
 
